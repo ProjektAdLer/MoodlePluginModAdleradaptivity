@@ -144,6 +144,8 @@ jobs:
         run: |
           cd moodle
           php -d pcov.enabled=1 -d pcov.directory=. vendor/bin/phpunit --coverage-text --configuration mod/adleradaptivity --testdox --coverage-clover mod/adleradaptivity/coverage.xml
+          cat mod/adleradaptivity/coverage.xml
+          cat mod/adleradaptivity/phpunit.xml
           # restore tests are randomly causing segfaults when run with moodle-plugin-ci, but run totally fine when run with phpunit directly
           # https://github.com/moodlehq/moodle-plugin-ci/issues/204
           # moodle-plugin-ci phpunit --fail-on-warning --coverage-clover --coverage-text -vvv
