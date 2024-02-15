@@ -159,7 +159,6 @@ jobs:
           unset GITHUB_ACTIONS  
           php ../../vendor/bin/php-coveralls --coverage_clover=coverage.xml -v --json_path coveralls_upload.json --exclude-no-stmt
 
-#     There are no behat tests (yet)
-#      - name: Behat features
-#        if: ${{ always() }}
-#        run: moodle-plugin-ci behat --profile chrome
+      - name: Behat features
+        if: ${{ always() }}
+        run: moodle-plugin-ci behat --profile chrome
