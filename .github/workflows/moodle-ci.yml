@@ -163,4 +163,8 @@ jobs:
 
       - name: Behat features
         if: ${{ always() }}
-        run: moodle-plugin-ci behat --profile headlesschrome
+        run: |
+          ls -lha /home/runner/work/MoodlePluginModAdleradaptivity/MoodlePluginModAdleradaptivity/moodledata/behat_moodledata/
+          ls -lha /home/runner/work/MoodlePluginModAdleradaptivity/MoodlePluginModAdleradaptivity/moodledata/behat_moodledata/behatrun/
+          ls -lha /home/runner/work/MoodlePluginModAdleradaptivity/MoodlePluginModAdleradaptivity/moodledata/behat_moodledata/behatrun/behat
+          moodle-plugin-ci behat --profile chrome
