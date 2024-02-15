@@ -163,6 +163,6 @@ jobs:
 
       - name: Behat features
         if: ${{ always() }}
-        run: moodle-plugin-ci behat --profile headlesschrome
+        run: moodle-plugin-ci behat --profile chrome
 #        todo: behat init script not run https://github.com/ProjektAdLer/MoodlePluginModAdleradaptivity/actions/runs/7909544090/job/21590748384
 # todo: coverage of behat tests
