@@ -78,7 +78,7 @@ jobs:
       - name: Install moodle-plugin-ci
         run: |
           moodle-plugin-ci add-plugin ProjektAdLer/MoodlePluginLocalLogging
-          moodle-plugin-ci install --no-init --plugin ./plugin --db-host=127.0.0.1
+          moodle-plugin-ci install --plugin ./plugin --db-host=127.0.0.1
         env:
           DB: ${{ matrix.database }}
           MOODLE_BRANCH: ${{ matrix.moodle-branch }}
@@ -131,13 +131,13 @@ jobs:
           cd moodle/mod/adleradaptivity
           composer i
 
-      - name: Init moodle test env
-        # if using moodle-plugin-ci for the init phase the phpunit.xml file is replaced with a generated one including files that should not be included
-        # https://github.com/moodlehq/moodle-plugin-ci/issues/203
-        if: ${{ always() }}
-        run: |
-          cd moodle
-          php admin/tool/phpunit/cli/init.php
+#      - name: Init moodle test env
+#        # if using moodle-plugin-ci for the init phase the phpunit.xml file is replaced with a generated one including files that should not be included
+#        # https://github.com/moodlehq/moodle-plugin-ci/issues/203
+#        if: ${{ always() }}
+#        run: |
+#          cd moodle
+#          php admin/tool/phpunit/cli/init.php
 
       - name: PHPUnit tests
         if: ${{ always() }}
@@ -163,8 +163,6 @@ jobs:
 
       - name: Behat features
         if: ${{ always() }}
-        run: |
-          ls -lha /home/runner/work/MoodlePluginModAdleradaptivity/MoodlePluginModAdleradaptivity/moodledata/behat_moodledata/
-          ls -lha /home/runner/work/MoodlePluginModAdleradaptivity/MoodlePluginModAdleradaptivity/moodledata/behat_moodledata/behatrun/
-          ls -lha /home/runner/work/MoodlePluginModAdleradaptivity/MoodlePluginModAdleradaptivity/moodledata/behat_moodledata/behatrun/behat
-          moodle-plugin-ci behat --profile chrome
+        run: moodle-plugin-ci behat --profile headlesschrome
+#        todo: behat init script not run https://github.com/ProjektAdLer/MoodlePluginModAdleradaptivity/actions/runs/7909544090/job/21590748384
+# todo: coverage of behat tests
